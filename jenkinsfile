@@ -1,0 +1,11 @@
+node('master'){
+    stage ('continuous download'){
+        git credentialsId: 'b81ce157-f09e-4db0-8ee7-e2dd08667167', url: 'https://github.com/faazen/food.git'
+    }
+       stage('email notification'){
+      mail bcc: '', body: 'jenkins jobs   has notified', cc: '', from: '', replyTo: '', subject: 'jenkiins job', to: 'fajarul2893@gmail.com'
+    }
+    stage('continuous build'){
+       bat "\${tool 'MSBuild'} Picture Puzzle/Picture Puzzle.csproj /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}/"
+    }
+}
