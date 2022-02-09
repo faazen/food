@@ -6,6 +6,6 @@ node('master'){
       mail bcc: '', body: 'jenkins jobs   has notified', cc: '', from: '', replyTo: '', subject: 'jenkiins job', to: 'fajarul2893@gmail.com'
     }
     stage('continuous build'){
-       bat "\${tool 'MSBuild'} FastFood_management1.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}/"
+       sh "\${tool 'MSBuild'} FastFood_management1.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}/"
     }
 }
